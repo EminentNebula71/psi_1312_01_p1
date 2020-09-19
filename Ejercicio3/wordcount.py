@@ -38,9 +38,43 @@ print_words() and print_top().
 """
 
 import sys
+from collections import Counter
 
 
-# +++your code here+++
+def print_words(filename):
+    f = open(filename, 'r')
+    dicc = {}
+    for line in f:
+        for word in line.split():
+            wordf = word.lower()
+            if wordf in dicc:
+                dicc[wordf]+=1
+            else:
+                dicc[wordf]=1
+
+    for key in sorted(dicc.keys()):
+        print (key, dicc[key])
+    f.close()
+    return
+
+def print_top(filename):
+    f = open(filename, 'r')
+    dicc = {}
+    for line in f:
+        for word in line.split():
+            wordf = word.lower()
+            if wordf in dicc:
+                dicc[wordf]+=1
+            else:
+                dicc[wordf]=1
+    i=1
+    cont = Counter(dicc)
+    print (cont.most_common(20))
+    f.close()
+    return
+
+
+
 # Define print_words(filename) and print_top(filename) functions.
 # You could write a helper utility function that reads a file
 # and builds and returns a word/count dict for it.

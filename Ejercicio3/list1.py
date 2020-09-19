@@ -22,8 +22,13 @@
 # and last chars of the string are the same.
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
-    # +++your code here+++
-    return
+    max = len(words)
+    i=0
+    total=0
+    for i in range(max):
+        if len(words[i])>=2 and words[i][0] == words[i][-1]:
+            total+=1
+    return total
 
 
 # B. front_x
@@ -34,8 +39,23 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-    # +++your code here+++
-    return
+    max = len(words)
+    i=0
+    lista_grande=[]
+    lista_x=[]
+    lista_otros=[]
+    for i in range(max):
+        if words[i][0]=='x':
+            lista_x.append(words[i])
+        else:
+            lista_otros.append(words[i])
+        
+    lista_x.sort()
+    lista_otros.sort()
+
+    lista_grande.extend(lista_x)
+    lista_grande.extend(lista_otros)
+    return lista_grande
 
 
 # C. sort_last
@@ -45,8 +65,27 @@ def front_x(words):
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
-    # +++your code here+++
-    return
+    final = []
+    i=1
+    dentro=0
+    min=1000
+    #final.append(tuples[0])
+    for i in range(len(tuples)):
+        if tuples[i][-1]<min:
+            min = tuples[i][-1]
+            final.insert(0, tuples[i])
+            #actual+=1
+        else:
+            j=0
+            for j in range(len(tuples)):
+                if tuples[i][-1] < final[j][-1]:
+                    final.insert(j, tuples[i])
+                    dentro=1
+                    break
+            if dentro==0:
+                final.append(tuples[i])
+
+    return final
 
 
 # Simple provided test() function used in main() to print
