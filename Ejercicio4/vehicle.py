@@ -5,13 +5,34 @@ from abc import ABC, abstractmethod
 
 # define the Vehicle class
 class Vehicle(ABC):
-    make = ""
-    model = ""
-    color = ""
-    value = 0.0
+    def __init__ (self, make, model, color, value):
+        self.make = make
+        self.model = model
+        self.color = color
+        self.value = value
+    #make = ""
+    #model = ""
+    #color = ""
+    #value = 0.0
 
     def description(self):
         desc_str = "%s %s is a %s %s worth $%.2f" % (self.make, self.model, self.color, self.type(), self.value)
+        return desc_str
+
+class Car(Vehicle):
+    def __init__(self, make, model, color, value):
+        super().__init__(make, model, color, value)
+
+    def description(self):
+        desc_str = "%s %s is a %s Car worth $%.2f" % (self.make, self.model, self.color, self.value)
+        return desc_str
+
+class Motorcycle(Vehicle):
+    def __init__(self, make, model, color, value):
+        super().__init__(make, model, color, value)
+
+    def description(self):
+        desc_str = "%s %s is a %s Motorcycle worth $%.2f" % (self.make, self.model, self.color, self.value)
         return desc_str
 
     
