@@ -1,41 +1,48 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 # Basic class exercises
 # Create and complete Vehicle class and subclasses to satisfy tests.
 
+
 # define the Vehicle class
 class Vehicle(ABC):
-    def __init__ (self, make, model, color, value):
+    def __init__(self, make, model, color, value):
         self.make = make
         self.model = model
         self.color = color
         self.value = value
-    #make = ""
-    #model = ""
-    #color = ""
-    #value = 0.0
 
     def description(self):
-        desc_str = "%s %s is a %s %s worth $%.2f" % (self.make, self.model, self.color, self.type(), self.value)
+        desc_str = "%s %s is a %s %s worth $%.2f" % (self.make,
+                                                     self.model,
+                                                     self.color,
+                                                     self.type(), self.value)
         return desc_str
+
 
 class Car(Vehicle):
     def __init__(self, make, model, color, value):
         super().__init__(make, model, color, value)
 
     def description(self):
-        desc_str = "%s %s is a %s Car worth $%.2f" % (self.make, self.model, self.color, self.value)
+        desc_str = "%s %s is a %s Car worth $%.2f" % (self.make,
+                                                      self.model,
+                                                      self.color, self.value)
         return desc_str
+
 
 class Motorcycle(Vehicle):
     def __init__(self, make, model, color, value):
         super().__init__(make, model, color, value)
 
     def description(self):
-        desc_str = "%s %s is a %s Motorcycle worth $%.2f" % (self.make, self.model, self.color, self.value)
+        desc_str = "%s %s is a %s Motorcycle worth $%.2f" % (self.make,
+                                                             self.model,
+                                                             self.color,
+                                                             self.value)
         return desc_str
 
-    
+
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
@@ -45,13 +52,16 @@ def test(got, expected):
         prefix = '  X '
     print('%s got: %s expected: %s' % (prefix, repr(got), repr(expected)))
 
+
 # Create different objects and validate assignments.
 def main():
     vehicle1 = Car(make="Seat", model="Leon", value=1000.0, color="red")
     test(vehicle1.description(), 'Seat Leon is a red Car worth $1000.00')
 
     vehicle2 = Motorcycle("Ducati", "Diavel 1260", value=900.25, color="black")
-    test(vehicle2.description(), 'Ducati Diavel 1260 is a black Motorcycle worth $900.25')
+    test(vehicle2.description(),
+         'Ducati Diavel 1260 is a black Motorcycle worth $900.25')
+
 
 # Standard boilerplate to call the main() function.
 if __name__ == '__main__':
