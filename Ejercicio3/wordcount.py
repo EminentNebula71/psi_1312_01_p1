@@ -48,14 +48,15 @@ def print_words(filename):
         for word in line.split():
             wordf = word.lower()
             if wordf in dicc:
-                dicc[wordf]+=1
+                dicc[wordf] += 1
             else:
-                dicc[wordf]=1
+                dicc[wordf] = 1
 
     for key in sorted(dicc.keys()):
-        print (key, dicc[key])
+        print(key, dicc[key])
     f.close()
     return
+
 
 def print_top(filename):
     f = open(filename, 'r')
@@ -64,15 +65,13 @@ def print_top(filename):
         for word in line.split():
             wordf = word.lower()
             if wordf in dicc:
-                dicc[wordf]+=1
+                dicc[wordf] += 1
             else:
-                dicc[wordf]=1
-    i=1
+                dicc[wordf] = 1
     cont = Counter(dicc)
-    print (cont.most_common(20))
+    print(cont.most_common(20))
     f.close()
     return
-
 
 
 # Define print_words(filename) and print_top(filename) functions.

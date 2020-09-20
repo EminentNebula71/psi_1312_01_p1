@@ -23,11 +23,11 @@
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
     max = len(words)
-    i=0
-    total=0
+    i = 0
+    total = 0
     for i in range(max):
-        if len(words[i])>=2 and words[i][0] == words[i][-1]:
-            total+=1
+        if len(words[i]) >= 2 and words[i][0] == words[i][-1]:
+            total += 1
     return total
 
 
@@ -40,16 +40,16 @@ def match_ends(words):
 # before combining them.
 def front_x(words):
     max = len(words)
-    i=0
-    lista_grande=[]
-    lista_x=[]
-    lista_otros=[]
+    i = 0
+    lista_grande = []
+    lista_x = []
+    lista_otros = []
     for i in range(max):
-        if words[i][0]=='x':
+        if words[i][0] == 'x':
             lista_x.append(words[i])
         else:
             lista_otros.append(words[i])
-        
+
     lista_x.sort()
     lista_otros.sort()
 
@@ -66,23 +66,21 @@ def front_x(words):
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
     final = []
-    i=1
-    dentro=0
-    min=1000
-    #final.append(tuples[0])
+    i = 1
+    dentro = 0
+    min = 1000
     for i in range(len(tuples)):
-        if tuples[i][-1]<min:
+        if tuples[i][-1] < min:
             min = tuples[i][-1]
             final.insert(0, tuples[i])
-            #actual+=1
         else:
-            j=0
+            j = 0
             for j in range(len(tuples)):
                 if tuples[i][-1] < final[j][-1]:
                     final.insert(j, tuples[i])
-                    dentro=1
+                    dentro = 1
                     break
-            if dentro==0:
+            if dentro == 0:
                 final.append(tuples[i])
 
     return final
@@ -105,7 +103,7 @@ def main():
     test(match_ends(['', 'x', 'xy', 'xyx', 'xx']), 2)
     test(match_ends(['aaa', 'be', 'abc', 'hello']), 1)
 
-    print ('\nfront_x')
+    print('\nfront_x')
     test(front_x(['bbb', 'ccc', 'axx', 'xzz', 'xaa']),
          ['xaa', 'xzz', 'axx', 'bbb', 'ccc'])
     test(front_x(['ccc', 'bbb', 'aaa', 'xcc', 'xaa']),
